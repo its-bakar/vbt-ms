@@ -1,10 +1,9 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataEmployee } from "../../data/mockData";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
+import Testform from "../../components/Testform";
 const Employee = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -17,8 +16,8 @@ const Employee = () => {
       cellClassName: "name-column--cell",
     },
     {
-      field: "phone",
-      headerName: "Phone Number",
+      field: "age",
+      headerName: "Age",
       flex: 1,
     },
     {
@@ -26,39 +25,40 @@ const Employee = () => {
       headerName: "Email",
       flex: 1,
     },
-    {
-      field: "accessLevel",
-      headerName: "Access Level",
-      flex: 1,
-      renderCell: ({ row: { role } }) => {
-        return (
-          <Box
-            width="60%"
-            m="0 auto"
-            p="5px"
-            display="flex"
-            justifyContent="center"
-            backgroundColor={
-              role === "manager"
-                ? colors.greenAccent[600]
-                : colors.greenAccent[700]
-            }
-            borderRadius="4px"
-          >
-            {role === "manager" && <SecurityOutlinedIcon />}
-            {role === "employee" && <LockOpenOutlinedIcon />}
-            <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-              {role}
-            </Typography>
-          </Box>
-        );
-      },
-    },
+    // {
+    //   field: "accessLevel",
+    //   headerName: "Access Level",
+    //   flex: 1,
+    //   renderCell: ({ row: { role } }) => {
+    //     return (
+    //       <Box
+    //         width="100%"
+    //         m="0 auto"
+    //         p="5px"
+    //         display="flex"
+    //         justifyContent="center"
+    //         backgroundColor={
+    //           role === "Manager"
+    //             ? colors.greenAccent[600]
+    //             : colors.blueAccent[600]
+    //         }
+    //         borderRadius="4px"
+    //       >
+    //         {role === "Manager" && <SecurityOutlinedIcon />}
+    //         {role === "Employee" && <LockOpenOutlinedIcon />}
+    //         <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
+    //           {role}
+    //         </Typography>
+    //       </Box>
+    //     );
+    //   },
+    // },
   ];
 
   return (
     <Box m="20px">
       <Header title="EMPLOYEES" subtitle="Managing the Employees" />
+      <Testform />
       <Box
         m="40px 0 0 0"
         height="75vh"
