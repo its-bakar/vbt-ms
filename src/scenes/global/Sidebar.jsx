@@ -4,6 +4,7 @@ import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import { tokens } from "../../theme";
 import "react-pro-sidebar/dist/css/styles.css";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 import ChecklistOutlinedIcon from "@mui/icons-material/ChecklistOutlined";
 import AccountBalanceOutlinedIcon from "@mui/icons-material/AccountBalanceOutlined";
@@ -12,6 +13,23 @@ import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
 import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import logo from "../../assets/logo.png";
+
+const Item = ({ title, to, icon, selected, setSelected }) => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  return (
+    <MenuItem
+      active={selected === title}
+      style={{ color: colors.grey[100] }}
+      onClick={() => setSelected(title)}
+      icon={icon}
+    >
+      <Typography>{title}</Typography>
+      <Link to={to} />
+    </MenuItem>
+  );
+};
+
 const Sidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -94,6 +112,58 @@ const Sidebar = () => {
               </Box>
             </Box>
           )}
+          {/* Menu */}
+          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+            <Item
+              title="Dashboard"
+              to="/"
+              icon={<HomeOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Employee"
+              to="/employee"
+              icon={<BadgeOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Attendence"
+              to="/attendence"
+              icon={<ChecklistOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Finance"
+              to="/finance"
+              icon={<AccountBalanceOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Projects"
+              to="/projects"
+              icon={<AccountTreeOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Chat"
+              to="/chat"
+              icon={<ChatOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Company Data"
+              to="/companydata"
+              icon={<BusinessCenterOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+          </Box>
         </Menu>
       </ProSidebar>
     </Box>
