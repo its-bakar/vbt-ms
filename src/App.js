@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
-// import Employees from "./scenes/employees";
+import Employee from "./scenes/employee";
 // import Attendence from "./scenes/attendence";
 // import Finance from "./scenes/finance";
 // import Projects from "./scenes/projects";
@@ -24,8 +24,8 @@ function App() {
             <Topbar />
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              {/* <Route path="/employees" element={<Employees />} />
-              <Route path="/attendence" element={<Attendence />} />
+              <Route path="/employee" element={<Employee />} />
+              {/* <Route path="/attendence" element={<Attendence />} />
               <Route path="/finance" element={<Finance />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/chat" element={<Chat />} />
